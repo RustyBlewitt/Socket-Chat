@@ -37,14 +37,15 @@ client.connect(async function(err) {
 
     // Create collections if they don't already exist
     const messages_collection = await db.createCollection('messages');
+    const users_collection = await db.createCollection('users');
     // const channels_collection = await db.createCollection('channels');
     // const groups_collection = await db.createCollection('groups');
-    // const users_collection = await db.createCollection('users');
-
+    
     // Bind all API calls to app
     require('./routes/api/send_message.js')(app, db);
     require('./routes/api/get_messages.js')(app, db);
     require('./routes/api/delete_message.js')(app, db, ObjectID);
+    require('./routes/api/create_user.js')(app, db);
 
 })
 
