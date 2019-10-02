@@ -1,0 +1,17 @@
+* {
+    color: #4c4c4c;
+} 
+ul {
+    padding-left: 0px;
+}
+li {
+    list-style: none;
+    padding: 5px;
+    border-bottom: 1px solid #cecece;
+    display: inline-block;
+}
+button {
+    color: #007ad6;
+    border: 1px solid #007ad6;
+    background-color: white;
+}

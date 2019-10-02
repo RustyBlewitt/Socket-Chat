@@ -1,0 +1,9 @@
+<div *ngIf="groups != null">
+    <div class="group" *ngFor="let g of groups">
+        <h2>{{g.groupname}}</h2>
+        <h6>Members: </h6>
+        <p class="member" *ngFor="let u of g.users">{{u}}</p>
+        <button type="submit" class="delete btn btn-primary" (click)="delete($event, g.groupname)">Delete</button>
+    </div>
+    <h6 *ngIf="error">{{error}}</h6>
+</div>

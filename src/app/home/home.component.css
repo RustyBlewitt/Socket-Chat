@@ -1,0 +1,36 @@
+* {
+    color: #4c4c4c;
+}
+
+.btn{
+    color: white;
+    margin: auto;
+    /* display: inline-block; */
+    margin: 5px 8px;
+}
+
+
+.delete-btn{
+    background: red;
+    border:red;
+}
+
+.delete-btn:hover{
+    background: #d40000;
+}
+
+.lvl-specific-privilege{
+    border-radius: 10px;
+    margin: 10px 0px;
+    /* padding: 10px; */
+    border: 1px solid #cecece;
+    position: relative;
+}
+
+.lvl-specific-privilege span {
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    color: #bbbbbb;
+    letter-spacing: 4px;
+}

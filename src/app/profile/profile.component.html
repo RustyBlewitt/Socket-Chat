@@ -1,0 +1,16 @@
+
+<h6>User profile:</h6>
+<h2>{{User.username}}</h2>
+<h6>Here are your stored details: </h6>
+<ul>
+    <li *ngIf="this.User.level">User type: {{level[User.level]}}</li>
+    <li *ngIf="this.User.email">Email: {{User.email}}</li>
+</ul>
+<!-- <div *ngIf="allUsers">
+    <h4>Here are all stored users: </h4>
+    <ul *ngFor="let u of allUsers">
+        <li>{{u.username}} - {{level[u.level]}}</li>
+    </ul>
+</div>
+<button *ngIf="User.level > 0" type="submit" class="btn btn-primary" (click)="adduser($event)">Add user to group</button> -->
+<button type="submit" class="btn btn-primary" (click)="logout($event)">Logout</button>

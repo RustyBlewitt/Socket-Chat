@@ -1,0 +1,22 @@
+<form *ngIf="channels" class="editchannel-form">
+        <h2>Edit channel</h2>
+        <button class="btn btn-primary unselected" *ngFor="let c of channels" (click)="selectchannel($event, c.name)">{{c.name}}</button>
+        <div *ngIf="selectedchannel">
+            <div class="form-channel">
+                <label for="channelName">Channel name</label>
+                <input name = "channelname" [(ngModel)] = "channelname" type="text" class="form-control" id="channelname" placeholder="{{selectedchannel.name}}">
+            </div>
+            <div class="margin-top margin-bottom form-channel">
+                <h6>Channel group: {{selectedchannel.groupname}}</h6>
+            </div>
+            <div class="margin-top" *ngIf="selectedchannel.users != null" class="form-channel">
+                <h6>Select channel members</h6>
+                <button *ngFor="let u of potentialusers" id="{{u.username}}" class="btn btn-primary unselected" (click)="toggleuser($event, u.username)">{{u.username}}</button>
+            </div>
+            <div class="margin-top">
+                <button type="submit" class="btn btn-primary" (click)="edit($event)">Save changes</button>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="display: block; margin-top: 10px; background: grey; border: grey;" (click)="cancel($event)">Cancel</button>
+        <p *ngIf="error">{{error}}.</p>
+    </form>

@@ -1,0 +1,34 @@
+.login-form{
+    border-radius: 20px;
+    box-shadow: #0000006e 7px 7px 14px 0px;
+    padding: 20px;
+    background: white;
+    color: #4c4c4c;
+    animation-duration: 2s;
+    transform-origin: bottom;
+    max-width: 600px;
+    margin: auto;
+}
+
+.login-form input{
+    margin-bottom: 1em;
+    padding: 0.5em;
+}
+
+button{
+    margin-bottom: 20px;
+}
+p{
+    color: red
+}
+.bounce {
+    animation-name: bounce;
+    animation-timing-function: ease;
+}
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    10%  { transform: translateY(0); }
+    30%  { transform: translateY(-30px); }
+    50%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}

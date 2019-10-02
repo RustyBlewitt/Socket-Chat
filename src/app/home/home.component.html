@@ -1,0 +1,38 @@
+
+<h2>Welcome back, {{User.username}}. </h2>
+
+<div *ngIf="User.groups != null"> 
+    <h5>Your groups: </h5>
+    <ul>
+        <li *ngFor="let g of User.groups">{{g}}</li>
+    </ul>
+</div>
+<div *ngIf="User.groups == null"> 
+    <h6>You do not yet belong to any groups.</h6>
+</div>
+<div *ngIf="User.level == 0"> <!-- Regular user -->
+    <h6>As a {{level[User.level]}}, there is not much you can do until assignment 2. </h6>
+</div>
+<div class="addedFunc" *ngIf="User.level > 0">
+    <h6>As a {{level[User.level]}}, here is some additional functionality available to you. </h6>
+    <ul *ngFor="let u of allUsers">
+        <li>{{u.username}} - {{level[u.level]}}</li>
+    </ul>
+    <div *ngIf="User.level > 0" class="lvl-specific-privilege"> <!-- Group assis -->
+        <span class="user-lvl">Group Assis</span>
+        <button type="submit" class="btn btn-primary" (click)="listUsers()">View users</button>
+        <button type="submit" class="btn btn-primary" (click)="createChannel()">Create channel</button>
+        <button type="submit" class="btn btn-primary" (click)="editChannelUsers()">Edit channel users</button>
+        <button type="submit" class="btn btn-primary delete-btn" (click)="deleteChannel()">Delete channel</button>
+    </div>
+    <div *ngIf="User.level > 1" class="lvl-specific-privilege"> <!-- Group admin -->
+        <span class="user-lvl">Group Admin</span>
+        <button type="submit" class="btn btn-primary" (click)="createGroup()">Create group</button>
+        <button type="submit" class="btn btn-primary delete-btn" (click)="deleteGroup()">Delete group</button>
+    </div>
+    <div *ngIf="User.level > 2" class="lvl-specific-privilege"> <!-- Super admin -->
+        <span class="user-lvl">Super Admin</span>
+        <button type="submit" class="btn btn-primary" (click)="createUser()">Create user</button>
+        <button type="submit" class="btn btn-primary delete-btn" (click)="deleteUser()">Delete user</button>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.navbar-nav{
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+.navbar-nav li{
+    margin-right: 10px;
+}
+.navbar-nav li a{
+    padding: 0px;
+    color: grey;
+}
+
+.active{
+    font-weight: bold;
+    color: #007ad6 !important;
+    border-bottom: 1px solid;
+}

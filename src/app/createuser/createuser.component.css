@@ -1,0 +1,27 @@
+form{
+    border-radius: 20px;
+    box-shadow: #0000006e 7px 7px 14px 0px;
+    padding: 20px;
+    background: white;
+    color: #4c4c4c;
+    animation-duration: 2s;
+    transform-origin: bottom;
+    max-width: 600px;
+    margin: auto;
+}
+
+.lvlbtn {
+    background-color: white;
+    color: #4c4c4c;
+    border: 1px solid #2c2c2c;
+    margin-right: 2px;
+}
+
+.activelvl{
+    background-color: #0062cc;
+    color: white;
+    border: 1px solid #0062cc;
+}
+/* .cancelbutton{
+    float: right;
+} */

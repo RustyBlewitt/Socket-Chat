@@ -1,0 +1,8 @@
+<div *ngIf="userlist != null">
+    <h4>List of all stored users: </h4>
+    <ul *ngFor="let u of userlist">
+        <li class="user">{{u.username}} - {{level[u.level]}}</li>
+        <!-- <li>ok </li> -->
+    </ul>
+</div>
+<button type="submit" class="btn btn-primary" (click)="home($event)">Home</button>

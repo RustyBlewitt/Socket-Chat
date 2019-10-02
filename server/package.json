@@ -1,0 +1,19 @@
+{
+  "name": "project_server",
+  "version": "1.0.0",
+  "description": "This server exists to fulfill the requirements of the week 3 workshop",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rusty Blewitt",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}
