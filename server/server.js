@@ -3,6 +3,29 @@ var express = require('express');           // Routing library
 var bodyParser = require('body-parser');    // Means of accessing form elements 
 var fs = require('fs');
 
+// Mongo setup
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017';
+const dbName = 'chat';
+const client = new MongoClient(url);
+
+client.connect(async function(err) {
+    if (err) {
+        console.log('Error connecting.\n', err);
+        return;
+    }
+
+    // Open db 'chat'
+    const db = client.db(dbName);
+    // Create collections if they don't already exist
+    const messages_collection = await db.createCollection('messages');
+    const channels_collection = await db.createCollection('channels');
+    const groups_collection = await db.createCollection('groups');
+    const users_collection = await db.createCollection('users');
+})
+
+// -----------------Mongo stuff above-------------------
+
 // Users stored here
 var userStringJson = fs.readFileSync('./users.json', 'utf8');
 // Groups stored here
