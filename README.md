@@ -35,7 +35,7 @@ Users{
 }
 
 Groups{
-    "groupname": string;
+    "group_name": string;
     "admins": string[];
     "assis": string[];
     "users": string[]
@@ -44,7 +44,7 @@ Groups{
 Channels{
     "name": string;
     "users": string[];
-    "groupname": string;
+    "group_name": string;
     "messages": string[];   // Assignment 2 will involve actual chat
 }
 ```
@@ -61,17 +61,17 @@ Channels{
 
 * <h4>createUser</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createUser", {'username': username, 'password': password, 'email': email, 'level': level, 'groups':[]});
 
-* <h4>createChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createChannel", {'channelname': channelname, 'channelusers': channelusers, 'groupname': groupname});
+* <h4>createChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createChannel", {'channel_name': channel_name, 'channelusers': channelusers, 'group_name': group_name});
 
-* <h4>createGroup</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createGroup", {'groupname': groupname, 'users': users,       'assis': assis, 'admins': admins});
+* <h4>createGroup</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createGroup", {'group_name': group_name, 'users': users,       'assis': assis, 'admins': admins});
 
-* <h4>editChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/editChannel", {'oldname': oldname, 'newname': newname, 'users': users, 'groupname':groupname});
+* <h4>editChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/editChannel", {'oldname': oldname, 'newname': newname, 'users': users, 'group_name':group_name});
 
-* <h4>deleteChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteChannel", {'channelname': channelname});
+* <h4>deleteChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteChannel", {'channel_name': channel_name});
 
 * <h4>deleteUser</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteUser", {'username': username});
 
-* <h4>deleteGroup</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteGroup", {'groupname': groupname});
+* <h4>deleteGroup</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteGroup", {'group_name': group_name});
 
 ## Angular architecture
 
