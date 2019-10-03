@@ -11,6 +11,8 @@ import { DeletegroupComponent } from './deletegroup/deletegroup.component';
 import { CreatechannelComponent } from './createchannel/createchannel.component';
 import { EditchannelComponent } from './editchannel/editchannel.component';
 import { DeletechannelComponent } from './deletechannel/deletechannel.component';
+import { GroupsComponent } from './groups/groups.component';
+import { ChannelContainerComponent } from './channel-container/channel-container.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: 'deletegroup', component: DeletegroupComponent },
   { path: 'createchannel', component: CreatechannelComponent },
   { path: 'editchannel', component: EditchannelComponent },
-  { path: 'deletechannel', component: DeletechannelComponent }
+  { path: 'deletechannel', component: DeletechannelComponent },
+  { path: 'groups', component: GroupsComponent},
+  { path: 'channels', component: ChannelContainerComponent},
 ];
 
 @NgModule({

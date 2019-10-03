@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   level = ['Regular User', 'Group Assis', 'Group Admin', 'Super Admin'];
 
 
-  constructor(public router: Router, dataservice: DataService, appC: AppComponent) {
+  constructor(public router: Router, dataservice: DataService, appComp: AppComponent) {
     if(this.User){
       console.log("User found.\n User level: ", this.User.level, " allUsers: ", this.allUsers);
 
@@ -32,11 +32,9 @@ export class ProfileComponent implements OnInit {
       console.log('Could not find user.\n');
     }
 
-    appC.updateActive("#profile-link");
+    appComp.updateActive("#profile-link");
 
   }
-  
-  
 
   ngOnInit() {
     

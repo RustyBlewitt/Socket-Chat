@@ -2,7 +2,7 @@ import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 let AppComponent = class AppComponent {
     constructor() {
-        this.title = 'week5';
+        this.title = 'Chat room';
     }
     updateActive(target) {
         document.querySelectorAll('.nav-link').forEach((el) => el.setAttribute("class", "nav-link"));

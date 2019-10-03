@@ -11,10 +11,10 @@ import { DataService } from './../data.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private dataservice: DataService, appC: AppComponent) {
+  constructor(private router: Router, private dataservice: DataService, appComp: AppComponent) {
     this.error = false;
     this.allUsers = null;
-    appC.updateActive("#login-link");
+    appComp.updateActive("#login-link");
   }
 
   username: string;

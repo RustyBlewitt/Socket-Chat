@@ -1,0 +1,8 @@
+<div *ngFor="let g of groups">
+    <div>{{g}}</div>
+</div>
+
+<div class='no_groups' *ngIf="groups && groups.length == 0">
+    <h1>You don't belong to any groups</h1>
+    <img class='alone_img' src='../../assets/alone.jpeg'>
+</div>

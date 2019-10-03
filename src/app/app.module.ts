@@ -18,6 +18,8 @@ import { DeletegroupComponent } from './deletegroup/deletegroup.component';
 import { CreatechannelComponent } from './createchannel/createchannel.component';
 import { EditchannelComponent } from './editchannel/editchannel.component';
 import { DeletechannelComponent } from './deletechannel/deletechannel.component';
+import { GroupsComponent } from './groups/groups.component';
+import { ChannelContainerComponent } from './channel-container/channel-container.component';
 // import { ChannelComponent } from './channel/channel.component';
 
 @NgModule({
@@ -36,6 +38,8 @@ import { DeletechannelComponent } from './deletechannel/deletechannel.component'
     CreatechannelComponent,
     EditchannelComponent,
     DeletechannelComponent,
+    GroupsComponent,
+    ChannelContainerComponent,
   ],
   imports: [
     BrowserModule,
