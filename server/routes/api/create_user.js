@@ -9,7 +9,6 @@ module.exports = (app, db) => {
         // Incoming body
         // {
         //     "email": String,
-        //     "groups": String[],
         //     "level": number,
         //     "name": "Newbie",
         //     "password": "password"

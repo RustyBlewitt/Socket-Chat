@@ -1,7 +1,7 @@
-module.exports = (app, db, ObjectID) => {
+module.exports = (app, db) => {
 
     app.post('/api/delete_user', function(req, res){
-        if(!req.body._id) {
+        if(!req.body.username) {
             return res.sendStatus(400);
         }
         console.log('Request received: ', req.body);
@@ -9,15 +9,10 @@ module.exports = (app, db, ObjectID) => {
     
         // Incoming body
         // {
-        //     _id: String,
+        //     username: String,
         // }
 
-        const id = new ObjectID(req.body._id);
-        const query = {
-            _id: id,
-        }
-
-        collection.deleteOne(query, function(err, result){
+        collection.deleteOne({'username': req.body.username}, function(err, result){
             if(result){
                 if(result.n == 0){
                     console.log('User not found for deletion.', result.result);
