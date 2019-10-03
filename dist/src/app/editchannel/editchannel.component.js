@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
-let EditchannelComponent = class EditchannelComponent {
+let UpdatechannelComponent = class UpdatechannelComponent {
     constructor(dataservice, router) {
         this.dataservice = dataservice;
         this.router = router;
@@ -47,10 +47,10 @@ let EditchannelComponent = class EditchannelComponent {
     // data stored in this component
     edit(event) {
         event.preventDefault();
-        let newName = this.channel_name || this.selectedchannel.name;
+        let new_name = this.channel_name || this.selectedchannel.name;
         let users = this.selectedusers;
         let group_name = this.selectedchannel.group_name;
-        this.dataservice.editChannel(this.selectedchannel.name, newName, users, group_name).subscribe((success) => {
+        this.dataservice.editChannel(this.selectedchannel.name, new_name, users, group_name).subscribe((success) => {
             success ? this.router.navigate(['home']) : this.error = "Failed to edit";
         });
     }
@@ -72,12 +72,12 @@ let EditchannelComponent = class EditchannelComponent {
         console.log("Selected users: ", this.selectedusers);
     }
 };
-EditchannelComponent = tslib_1.__decorate([
+UpdatechannelComponent = tslib_1.__decorate([
     Component({
-        selector: 'app-editchannel',
-        templateUrl: './editchannel.component.html',
-        styleUrls: ['./editchannel.component.css']
+        selector: 'app-updatechannel',
+        templateUrl: './updatechannel.component.html',
+        styleUrls: ['./updatechannel.component.css']
     })
-], EditchannelComponent);
-export { EditchannelComponent };
-//# sourceMappingURL=editchannel.component.js.map
+], UpdatechannelComponent);
+export { UpdatechannelComponent };
+//# sourceMappingURL=updatechannel.component.js.map

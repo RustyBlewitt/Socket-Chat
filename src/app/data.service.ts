@@ -17,47 +17,47 @@ export class DataService {
   }
 
   attemptLogin(username, password){
-    return this.http.post("http://localhost:3000/api/auth", {'username': username, 'password': password});
+    return this.http.post('http://localhost:3000/api/auth', {'username': username, 'password': password});
   }
 
   createUser(username, password, email, level){
-    return this.http.post("http://localhost:3000/api/createUser", {'username': username, 'password': password, 'email': email, 'level': level, 'groups':[]});
+    return this.http.post('http://localhost:3000/api/create_user', {'username': username, 'password': password, 'email': email, 'level': level, 'groups':[]});
   }
 
-  createChannel(channel_name, channelusers, group_name){
-    return this.http.post("http://localhost:3000/api/createChannel", {'channel_name': channel_name, 'channelusers': channelusers, 'group_name': group_name});
+  createChannel(channel_name, users, group_name){
+    return this.http.post('http://localhost:3000/api/create_channel', {'channel_name': channel_name, 'users': users, 'group_name': group_name});
   }
 
   createGroup(group_name, users, assis, admins){
-    return this.http.post("http://localhost:3000/api/createGroup", {'group_name': group_name, 'users': users, 'assis': assis, 'admins': admins});
+    return this.http.post('http://localhost:3000/api/create_group', {'group_name': group_name, 'users': users, 'assis': assis, 'admins': admins});
   }
 
   getAllUsers(){
-    return this.http.get("http://localhost:3000/api/allUsers");
+    return this.http.post('http://localhost:3000/api/get_users', {'query': {}});
   };
   
   getAllGroups(){
-    return this.http.get("http://localhost:3000/api/allGroups");
+    return this.http.post('http://localhost:3000/api/get_groups', {'query': {}});
   }
 
   getAllChannels(){
-    return this.http.get("http://localhost:3000/api/allChannels");
+    return this.http.post('http://localhost:3000/api/get_channels', {'query': {}});
   }
 
-  editChannel(oldname, newname, users, group_name){
-    return this.http.post("http://localhost:3000/api/editChannel", {'oldname': oldname, 'newname': newname, 'users': users, 'group_name':group_name});
+  updateChannel(old_name, new_name, users, group_name){
+    return this.http.post('http://localhost:3000/api/update_channel', {'old_name': old_name, 'new_name': new_name, 'users': users, 'group_name':group_name});
   }
 
   deleteChannel(channel_name){
-    return this.http.post("http://localhost:3000/api/deleteChannel", {'channel_name': channel_name});
+    return this.http.post('http://localhost:3000/api/delete_channel', {'channel_name': channel_name});
   }
 
   deleteUser(username){
-    return this.http.post("http://localhost:3000/api/deleteUser", {'username': username});
+    return this.http.post('http://localhost:3000/api/delete_user', {'username': username});
   }
 
   deleteGroup(group_name){
-    return this.http.post("http://localhost:3000/api/deleteGroup", {'group_name': group_name});
+    return this.http.post('http://localhost:3000/api/delete_group', {'group_name': group_name});
   }
 
 }

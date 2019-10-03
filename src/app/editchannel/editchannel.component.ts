@@ -69,10 +69,10 @@ export class EditchannelComponent implements OnInit {
   // data stored in this component
   edit(event){
     event.preventDefault();
-    let newName = this.channel_name || this.selectedchannel.name;
+    let new_name = this.channel_name || this.selectedchannel.name;
     let users = this.selectedusers;
     let group_name = this.selectedchannel.group_name;
-    this.dataservice.editChannel(this.selectedchannel.name, newName, users, group_name).subscribe( (success) => {
+    this.dataservice.updateChannel(this.selectedchannel.name, new_name, users, group_name).subscribe( (success) => {
       success ? this.router.navigate(['home']) : this.error = "Failed to edit";
     })
   }

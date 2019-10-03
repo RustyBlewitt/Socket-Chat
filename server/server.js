@@ -53,6 +53,7 @@ client.connect(async function(err) {
     require('./routes/api/create_channel.js')(app, db);
     require('./routes/api/delete_channel.js')(app, db);
     require('./routes/api/get_channels.js')(app, db);
+    require('./routes/api/update_channel.js')(app, db);
     
     require('./routes/api/create_group.js')(app, db);
     require('./routes/api/get_groups.js')(app, db);

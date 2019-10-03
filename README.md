@@ -65,7 +65,7 @@ Channels{
 
 * <h4>createGroup</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createGroup", {'group_name': group_name, 'users': users,       'assis': assis, 'admins': admins});
 
-* <h4>editChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/editChannel", {'oldname': oldname, 'newname': newname, 'users': users, 'group_name':group_name});
+* <h4>editChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/editChannel", {'old_name': old_name, 'new_name': new_name, 'users': users, 'group_name':group_name});
 
 * <h4>deleteChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteChannel", {'channel_name': channel_name});
 

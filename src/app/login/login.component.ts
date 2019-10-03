@@ -34,14 +34,14 @@ export class LoginComponent implements OnInit {
     form.classList.toggle('bounce'); // Flick on to activate animation
 
     this.dataservice.attemptLogin(this.username, this.password).subscribe(
-      (user: IUser) => {
-        console.log("this response ", user);
-        if (user.valid){
-          sessionStorage.setItem('user', JSON.stringify(user));
+      (data: any) => {
+          this.error = false;
+          sessionStorage.setItem('user', JSON.stringify(data));
           this.router.navigate(['/home']);
-        } else {
-          this.error = true;
-        }
+      },
+      (err: any) => {
+        console.log("Erroring out bro", err);
+        this.error = true;
       }
     )
   }

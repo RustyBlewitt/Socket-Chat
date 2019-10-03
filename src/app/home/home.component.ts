@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
   
   editChannelUsers(){
-    this.router.navigate(['./editchannel']);
+    this.router.navigate(['./updatechannel']);
   }
 
   listUsers(){

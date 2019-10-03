@@ -19,7 +19,7 @@ let HomeComponent = class HomeComponent {
         this.router.navigate(['./deletegroup']);
     }
     editChannelUsers() {
-        this.router.navigate(['./editchannel']);
+        this.router.navigate(['./updatechannel']);
     }
     listUsers() {
         this.router.navigate(['./userlist']);

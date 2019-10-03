@@ -28,8 +28,8 @@ let DataService = class DataService {
     getAllChannels() {
         return this.http.get("http://localhost:3000/api/allChannels");
     }
-    editChannel(oldname, newname, users, group_name) {
-        return this.http.post("http://localhost:3000/api/editChannel", { 'oldname': oldname, 'newname': newname, 'users': users, 'group_name': group_name });
+    editChannel(old_name, new_name, users, group_name) {
+        return this.http.post("http://localhost:3000/api/editChannel", { 'old_name': old_name, 'new_name': new_name, 'users': users, 'group_name': group_name });
     }
     deleteChannel(channel_name) {
         return this.http.post("http://localhost:3000/api/deleteChannel", { 'channel_name': channel_name });

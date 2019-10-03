@@ -1,16 +1,16 @@
 import { async, TestBed } from '@angular/core/testing';
-import { EditchannelComponent } from './editchannel.component';
-describe('EditchannelComponent', () => {
+import { UpdatechannelComponent } from './updatechannel.component';
+describe('UpdatechannelComponent', () => {
     let component;
     let fixture;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [EditchannelComponent]
+            declarations: [UpdatechannelComponent]
         })
             .compileComponents();
     }));
     beforeEach(() => {
-        fixture = TestBed.createComponent(EditchannelComponent);
+        fixture = TestBed.createComponent(UpdatechannelComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
@@ -18,4 +18,4 @@ describe('EditchannelComponent', () => {
         expect(component).toBeTruthy();
     });
 });
-//# sourceMappingURL=editchannel.component.spec.js.map
+//# sourceMappingURL=updatechannel.component.spec.js.map
