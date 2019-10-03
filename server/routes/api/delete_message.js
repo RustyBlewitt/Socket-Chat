@@ -7,7 +7,7 @@ module.exports = (app, db, ObjectID) => {
         console.log('Request received: ', req.body);
         const collection = db.collection('messages');
     
-        // Expected body
+        // Incoming body
         // {
         //     _id: String,
         // }

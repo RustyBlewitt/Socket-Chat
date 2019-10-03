@@ -7,7 +7,7 @@ module.exports = (app, db) => {
         console.log('Request received: ', req.body);
         const collection = db.collection('users');
     
-        // Expected body
+        // Incoming body
         // {
         //     query: {},
         // }
