@@ -1,7 +1,7 @@
 module.exports = (app, db) => {
 
     app.post('/api/get_messages', function(req, res){
-        if(!req.body.query.channel) {
+        if(!req.body.channel_name) {
             return res.sendStatus(400);
         }
         console.log('Request received: ', req.body);
@@ -9,11 +9,11 @@ module.exports = (app, db) => {
     
         // Incoming body
         // {
-        //     channel: String,
+        //     channel_name: String,
         // }
 
         const query = {
-            "channel": req.body.channel,
+            "channel_name": req.body.channel_name,
         }
 
         collection.find(query).sort({ createdOn: -1}).toArray(function(err, result_array){

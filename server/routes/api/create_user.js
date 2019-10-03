@@ -1,6 +1,6 @@
 module.exports = (app, db) => {
     app.post('/api/create_user', async function (req, res) {
-        if (!req.body) {
+        if (!req.body.username || !req.body.password || !req.body.email) {
             return res.sendStatus(400);
         }
 
@@ -15,8 +15,9 @@ module.exports = (app, db) => {
         //     "password": "password"
         // }
 
+        
         // Check if email or password exists
-        let existing = false;
+        let existing;
         await collection.find({
             $or: [
                 {'name': req.body.name},

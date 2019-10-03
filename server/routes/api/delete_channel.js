@@ -1,7 +1,7 @@
 module.exports = (app, db) => {
 
     app.post('/api/delete_channel', async function(req, res){
-        if(!req.body.channelname) {
+        if(!req.body.channel_name) {
             return res.sendStatus(400);
         }
         console.log('Request received: ', req.body);
@@ -9,7 +9,7 @@ module.exports = (app, db) => {
         
         // Incoming body
         // {
-        //     channelname: String,
+        //     channel_name: String,
         // }
 
         collection.deleteOne(req.body, function(err, result){

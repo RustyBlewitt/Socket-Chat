@@ -9,13 +9,14 @@ module.exports = (app, db) => {
         
         // Incoming body
         // {
-        //     channelname: String,
-        //     groupname: String,
+        //     channel_name: String,
+        //     group_name: String,
         //     users: String[],
         // }
 
         // Check if channel name exists
-        await collection.find({'channelname': req.body.channelname}).toArray().then((res) => {
+        let existing;
+        await collection.find({'channel_name': req.body.channel_name}).toArray().then((res) => {
             console.log("Here the result: ", res);
             existing = res.length > 0 ? true : false;
         });
