@@ -47,6 +47,7 @@ client.connect(async function(err) {
     require('./routes/api/delete_message.js')(app, db, ObjectID);
     require('./routes/api/create_user.js')(app, db);
     require('./routes/api/get_users.js')(app, db);
+    require('./routes/api/create_channel.js')(app, db);
 
 })
 
