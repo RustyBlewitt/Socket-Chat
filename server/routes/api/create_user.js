@@ -6,9 +6,17 @@ module.exports = (app, db) => {
 
         const collection = db.collection('users');
 
+        // Incoming body
+        // {
+        //     "email": String,
+        //     "groups": String[],
+        //     "level": number,
+        //     "name": "Newbie",
+        //     "password": "password"
+        // }
+
         // Check if email or password exists
         let existing = false;
-
         await collection.find({
             $or: [
                 {'name': req.body.name},
@@ -18,16 +26,16 @@ module.exports = (app, db) => {
             existing = res.length > 0 ? true : false;
         });
 
-        console.log("Is it existing?: ", existing);
         // If user exists, send response and return early
         if(existing){
-            res.status(200).send({"success": false, "message": "Username or email already exists."});
-            return;
+            console.log("Username or email already exists: ", req.body.name, req.body.email);
+            return res.status(409).send({"message": "Username or email already exists."});
+            
         }
         else{
             await collection.insertOne(req.body, function(err, result){
                 if(result){
-                    console.log('Successful insertion', result.result);
+                    console.log('Successful user creation', result.result);
                     res.status(200).send(result.result);
                 } else {
                     console.log('Issue: ', err);

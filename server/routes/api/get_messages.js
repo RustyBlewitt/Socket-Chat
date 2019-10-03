@@ -1,7 +1,7 @@
 module.exports = (app, db) => {
 
     app.post('/api/get_messages', function(req, res){
-        if(!req.body) {
+        if(!req.body.query.channel) {
             return res.sendStatus(400);
         }
         console.log('Request received: ', req.body);
@@ -16,16 +16,18 @@ module.exports = (app, db) => {
             "channel": req.body.channel,
         }
 
-        collection.find(query).sort({ createdOn: -1}).toArray(function(err, result){
-            if(result){
-                console.log('Successful retrieval of messages.');
-                result.forEach(doc => {
+        collection.find(query).sort({ createdOn: -1}).toArray(function(err, result_array){
+            if(result_array){
+                // For each message...
+                result_array.forEach(msg => {
                     // Extract timestamp to base level property
-                    doc.timestamp = doc._id.getTimestamp();
+                    msg.timestamp = msg._id.getTimestamp();
                 });
-                res.status(200).send(result);
+                console.log('Successful retrieval of messages.');
+                return res.status(200).send(result_array);
             } else {
-                res.status(500).send(err);
+                console.log('Issue: ', err);
+                return res.status(500).send(err);
             }
         });
         
