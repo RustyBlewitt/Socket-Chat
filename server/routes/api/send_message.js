@@ -13,7 +13,7 @@ module.exports = (app, db) => {
         //     message: String,
         //     user: String,
         //     date: Number, [YYYYMMDD]
-        //     seconds: Number, 
+        //     groups: String[],
         // }
         
         collection.insertOne(req.body, function(err, result){
