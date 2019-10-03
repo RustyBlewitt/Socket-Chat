@@ -1,12 +1,12 @@
 <form class="createchannel-form">
         <h2>Create channel</h2>
         <div class="form-channel">
-            <label for="channelName">Channel name</label>
-            <input name = "channelname" [(ngModel)] = "channelname" type="text" class="form-control" id="channelname" placeholder="Channel name">
+            <label for="channel_name">Channel name</label>
+            <input name = "channel_name" [(ngModel)] = "channel_name" type="text" class="form-control" id="channel_name" placeholder="Channel name">
         </div>
         <div class="margin-top margin-bottom form-channel">
             <h6>Channel group</h6>
-            <button *ngFor="let g of grouplist" id="{{g.groupname}}" class="btn btn-primary unselected" (click)="selectgroup($event, g.groupname)">{{g.groupname}}</button>
+            <button *ngFor="let g of grouplist" id="{{g.group_name}}" class="btn btn-primary unselected" (click)="selectgroup($event, g.group_name)">{{g.group_name}}</button>
         </div>
 
         <div class="margin-top" *ngIf="userlist != null" class="form-channel">

@@ -15,7 +15,7 @@ export class EditchannelComponent implements OnInit {
   potentialusers: any[];
   router: Router;
   selectedusers: string[];
-  channelname: string;
+  channel_name: string;
   error: string | null;
 
   constructor(dataservice: DataService, router: Router) {
@@ -50,13 +50,13 @@ export class EditchannelComponent implements OnInit {
       return ch.name == name;
     });
     this.selectedchannel = this.selectedchannel[0];
-    this.channelname = this.selectedchannel.channelname;
+    this.channel_name = this.selectedchannel.channel_name;
     this.dataservice.getAllUsers().subscribe( (res: any[]) => {
       this.potentialusers = res;
       this.potentialusers = this.potentialusers.filter( (u) => {
         let inGroup = false;
         u.groups.forEach( (g) => {
-          if(g == this.selectedchannel.groupname){
+          if(g == this.selectedchannel.group_name){
             inGroup = true;
           };
         })
@@ -69,10 +69,10 @@ export class EditchannelComponent implements OnInit {
   // data stored in this component
   edit(event){
     event.preventDefault();
-    let newName = this.channelname || this.selectedchannel.name;
+    let newName = this.channel_name || this.selectedchannel.name;
     let users = this.selectedusers;
-    let groupname = this.selectedchannel.groupname;
-    this.dataservice.editChannel(this.selectedchannel.name, newName, users, groupname).subscribe( (success) => {
+    let group_name = this.selectedchannel.group_name;
+    this.dataservice.editChannel(this.selectedchannel.name, newName, users, group_name).subscribe( (success) => {
       success ? this.router.navigate(['home']) : this.error = "Failed to edit";
     })
   }

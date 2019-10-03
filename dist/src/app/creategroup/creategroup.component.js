@@ -17,7 +17,7 @@ let CreategroupComponent = class CreategroupComponent {
     }
     create(event) {
         this.error = null;
-        if (this.groupname == null) {
+        if (this.group_name == null) {
             this.error = "Group name required";
             return;
         }
@@ -25,9 +25,9 @@ let CreategroupComponent = class CreategroupComponent {
             this.error = "Add users by clicking on their names";
             return;
         }
-        console.log(this.groupname);
+        console.log(this.group_name);
         event.preventDefault();
-        this.dataService.createGroup(this.groupname, this.usersToAdd, [], []).subscribe((res) => {
+        this.dataService.createGroup(this.group_name, this.usersToAdd, [], []).subscribe((res) => {
             if (res.error) {
                 this.error = res.error;
             }

@@ -9,10 +9,10 @@ let DeletechannelComponent = class DeletechannelComponent {
             this.channellist = channels;
         });
     }
-    delete(event, channelname) {
+    delete(event, channel_name) {
         event.preventDefault();
-        this.dataservice.deleteChannel(channelname).subscribe(res => {
-            console.log(res, " deletion of ", channelname);
+        this.dataservice.deleteChannel(channel_name).subscribe(res => {
+            console.log(res, " deletion of ", channel_name);
             res ? this.router.navigate(['home']) : this.error = "Error deleting channel";
         });
     }

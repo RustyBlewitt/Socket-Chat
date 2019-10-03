@@ -1,7 +1,7 @@
 <div *ngIf="channellist != null">
         <h4>Click channel to delete: </h4>
         <ul *ngFor="let c of channellist">
-            <li><button type="submit" class="btn btn-primary" (click)="delete($event, c.channelname)">{{c.name}}</button></li>
+            <li><button type="submit" class="btn btn-primary" (click)="delete($event, c.channel_name)">{{c.name}}</button></li>
         </ul>
         <h6 *ngIf="error" style="color: red;">{{error}}</h6>
         <button type="submit" class="cancel btn btn-primary" (click)="cancel($event)">Cancel</button>

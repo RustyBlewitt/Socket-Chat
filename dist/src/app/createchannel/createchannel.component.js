@@ -6,7 +6,7 @@ let CreatechannelComponent = class CreatechannelComponent {
         this.dataservice = dataservice;
         this.selectedusers = [];
         this.router = router;
-        this.channelname = null;
+        this.channel_name = null;
         this.error = null;
         dataservice.getAllGroups().subscribe((res) => {
             this.grouplist = res;
@@ -16,7 +16,7 @@ let CreatechannelComponent = class CreatechannelComponent {
     }
     create(event) {
         event.preventDefault();
-        this.dataservice.createChannel(this.channelname, this.selectedusers, this.selectedgroup).subscribe((success) => {
+        this.dataservice.createChannel(this.channel_name, this.selectedusers, this.selectedgroup).subscribe((success) => {
             success ? this.router.navigate(['home']) : this.error = "Error creating channel";
         });
     }
@@ -40,7 +40,7 @@ let CreatechannelComponent = class CreatechannelComponent {
         }
         console.log('sel users: ', this.selectedusers);
     }
-    selectgroup(event, groupname) {
+    selectgroup(event, group_name) {
         event.preventDefault();
         document.querySelectorAll(".selected").forEach((el) => {
             el.setAttribute("class", "btn btn-primary unselected");
@@ -48,17 +48,17 @@ let CreatechannelComponent = class CreatechannelComponent {
         this.selectedusers = [];
         let userlist = [];
         this.grouplist.forEach((group) => {
-            if (group.groupname == groupname) {
+            if (group.group_name == group_name) {
                 group.users.forEach((user) => {
                     userlist.push(user);
                 });
             }
-            document.querySelector('#' + group.groupname).setAttribute('class', 'btn btn-primary unselected');
+            document.querySelector('#' + group.group_name).setAttribute('class', 'btn btn-primary unselected');
         });
-        document.querySelector('#' + groupname).setAttribute('class', 'btn btn-primary selected');
+        document.querySelector('#' + group_name).setAttribute('class', 'btn btn-primary selected');
         this.userlist = userlist;
         console.log(this.userlist);
-        this.selectedgroup = groupname;
+        this.selectedgroup = group_name;
     }
 };
 CreatechannelComponent = tslib_1.__decorate([

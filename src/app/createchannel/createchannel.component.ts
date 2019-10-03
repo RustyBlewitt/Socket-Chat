@@ -15,7 +15,7 @@ export class CreatechannelComponent implements OnInit {
   userlist: string[];
   selectedusers: string[];
   router: Router;
-  channelname: string;
+  channel_name: string;
   error: string | null;
   
   constructor(dataservice: DataService, router: Router) { 
@@ -23,7 +23,7 @@ export class CreatechannelComponent implements OnInit {
     this.dataservice = dataservice;
     this.selectedusers = [];
     this.router = router;
-    this.channelname = null;
+    this.channel_name = null;
     this.error = null;
 
     dataservice.getAllGroups().subscribe(
@@ -38,7 +38,7 @@ export class CreatechannelComponent implements OnInit {
 
   create(event){
     event.preventDefault();
-    this.dataservice.createChannel(this.channelname, this.selectedusers, this.selectedgroup).subscribe((success) => {
+    this.dataservice.createChannel(this.channel_name, this.selectedusers, this.selectedgroup).subscribe((success) => {
       success ? this.router.navigate(['home']) : this.error = "Error creating channel";
     })
   }
@@ -65,7 +65,7 @@ export class CreatechannelComponent implements OnInit {
     console.log('sel users: ', this.selectedusers);
   }
 
-  selectgroup(event, groupname){
+  selectgroup(event, group_name){
     event.preventDefault();
 
     document.querySelectorAll(".selected").forEach((el) => {
@@ -76,20 +76,20 @@ export class CreatechannelComponent implements OnInit {
     let userlist = [];
     this.grouplist.forEach(
       (group) => {
-        if(group.groupname == groupname){
+        if(group.group_name == group_name){
           group.users.forEach(
             (user) => {
               userlist.push(user);
             }
           )
         }
-        document.querySelector('#'+group.groupname).setAttribute('class', 'btn btn-primary unselected');
+        document.querySelector('#'+group.group_name).setAttribute('class', 'btn btn-primary unselected');
       })
-    document.querySelector('#'+groupname).setAttribute('class', 'btn btn-primary selected');
+    document.querySelector('#'+group_name).setAttribute('class', 'btn btn-primary selected');
 
     this.userlist = userlist;
     console.log(this.userlist);
-    this.selectedgroup = groupname;
+    this.selectedgroup = group_name;
     }
 
   // toggleuser(event, username){

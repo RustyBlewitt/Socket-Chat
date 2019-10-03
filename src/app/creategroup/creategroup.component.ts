@@ -12,7 +12,7 @@ export class CreategroupComponent implements OnInit {
 
   userlist: IUser[] | null;
   router: Router;
-  groupname: string;
+  group_name: string;
 
   usersToAdd: string[];
   dataService: DataService;
@@ -40,7 +40,7 @@ export class CreategroupComponent implements OnInit {
   // Create group through dataservice
   create(event){
     this.error = null;
-    if (this.groupname == null){
+    if (this.group_name == null){
       this.error = "Group name required";
       return;
     }
@@ -49,7 +49,7 @@ export class CreategroupComponent implements OnInit {
       return;
     }
     event.preventDefault();
-    this.dataService.createGroup(this.groupname, this.usersToAdd, [], []).subscribe(
+    this.dataService.createGroup(this.group_name, this.usersToAdd, [], []).subscribe(
       (res: any) => {
         if(res.error){
           this.error = res.error;

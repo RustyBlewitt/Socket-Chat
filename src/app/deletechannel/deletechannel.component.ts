@@ -24,11 +24,11 @@ export class DeletechannelComponent implements OnInit {
     })
   }
 
-  delete(event, channelname){
+  delete(event, channel_name){
     event.preventDefault();
-    this.dataservice.deleteChannel(channelname).subscribe(
+    this.dataservice.deleteChannel(channel_name).subscribe(
       res => {
-        console.log(res, " deletion of ", channelname);
+        console.log(res, " deletion of ", channel_name);
         res ? this.router.navigate(['home']) : this.error = "Error deleting channel";
     }
     )
