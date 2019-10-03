@@ -23,11 +23,11 @@ button{
 p{
     color: red
 }
-.bounce {
-    animation-name: bounce;
+.shake {
+    animation-name: shake;
     animation-timing-function: ease;
 }
-@keyframes bounce {
+@keyframes shake {
     0%   { transform: translateX(0); }
     10%  { transform: translateX(-20px); }
     30%  { transform: translateX(20px); }

@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
     if(this.User){
       console.log("User found.\n User level: ", this.User.level, " allUsers: ", this.allUsers);
 
+      // Can view other users if over a certain level
       if(this.User.level > 0){
         dataservice.getAllUsers().subscribe(
           (res:IUser[]) => {

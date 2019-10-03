@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
 
     var form = <HTMLElement> document.querySelector(".login-form");
-    form.classList.toggle('bounce'); // Flick off
-    form.classList.toggle('bounce'); // Flick on to activate animation
+    // form.classList.toggle('shake'); // Flick off
+    // form.classList.toggle('shake'); // Flick on to activate animation
 
     this.dataservice.attemptLogin(this.username, this.password).subscribe(
       (data: any) => {
@@ -41,6 +41,8 @@ export class LoginComponent implements OnInit {
       },
       (err: any) => {
         console.log("Erroring out bro", err);
+        form.classList.toggle('shake'); // Flick off
+        form.classList.toggle('shake'); // Flick on to activate animation
         this.error = true;
       }
     )

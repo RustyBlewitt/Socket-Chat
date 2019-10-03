@@ -6,3 +6,47 @@ button {
     color: white;
     margin-right: 20px;
 }
+
+h6 {
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+.flex-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.left {
+    width: 50%
+}
+
+.right {
+    width: 50%;
+    background-color: grey;
+}
+
+.base {
+    border-radius: 10px 10px 0px 0px;
+    padding: 30px;
+    height: calc(100vh - 60px);
+    min-width: 250px;
+    width: 100%;
+    margin: auto;
+    box-shadow: #0000006e 7px 7px 14px 0px;
+}
+
+.base h1 {
+    color: #1a7ad6;
+    text-shadow: 2px 2px 5px #cccccc;
+    z-index: 2;
+}
+
+.base ul {
+    padding-left: 5px;
+    list-style-type: none;
+}
+

@@ -44,6 +44,10 @@ export class DataService {
     return this.http.post('http://localhost:3000/api/get_channels', {'query': {}});
   }
 
+  getChannelMessages(channel_name){
+    return this.http.post('http://localhost:3000/api/get_messages', {'channel_name': channel_name})
+  }
+
   updateChannel(old_name, new_name, users, group_name){
     return this.http.post('http://localhost:3000/api/update_channel', {'old_name': old_name, 'new_name': new_name, 'users': users, 'group_name':group_name});
   }
