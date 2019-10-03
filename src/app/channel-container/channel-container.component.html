@@ -1,6 +1,6 @@
 <div class='ch_contain'>
-    <div class='channel_card' *ngFor="let c of channels">
-        <h3>{{c.channel_name}}</h3>
+    <div class='channel_card' *ngFor="let c of channels" (click)="select_channel($event, c.channel_name)">
+            <h3>{{c.channel_name}}</h3>
     </div>
 </div>
     
@@ -8,3 +8,5 @@
     <h1>You don't belong to any channels</h1>
     <img class='alone_img' src='../../assets/alone.jpeg'>
 </div>
+
+<h1 *ngIf="current_channel">{{current_channel.channel_name}}</h1>

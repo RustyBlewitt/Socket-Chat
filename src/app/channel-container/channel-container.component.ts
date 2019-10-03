@@ -26,11 +26,22 @@ export class ChannelContainerComponent implements OnInit {
     );
   }
 
+  current_channel: any | null;
   dataService: DataService;
-  channels: Object[];
+  channels: any[];
   error_msg: String | null;
 
   ngOnInit() {
+  }
+
+  select_channel(event, channel_name) {
+    event.preventDefault();
+    for(let c in this.channels){
+      if(this.channels[c].channel_name == channel_name){
+        this.current_channel = this.channels[c];
+      }
+    }
+
   }
 
 }
