@@ -9,6 +9,11 @@ const url = 'mongodb://localhost:27017';
 const dbName = 'chat';
 const client = new MongoClient(url);
 
+// To delete specific mongo items
+const ObjectID = require('mongodb').ObjectID;
+
+var app = express();
+
 client.connect(async function(err) {
     if (err) {
         console.log('Error connecting.\n', err);
@@ -19,12 +24,53 @@ client.connect(async function(err) {
     const db = client.db(dbName);
     // Create collections if they don't already exist
     const messages_collection = await db.createCollection('messages');
-    const channels_collection = await db.createCollection('channels');
-    const groups_collection = await db.createCollection('groups');
-    const users_collection = await db.createCollection('users');
+    // const channels_collection = await db.createCollection('channels');
+    // const groups_collection = await db.createCollection('groups');
+    // const users_collection = await db.createCollection('users');
+
+    // These all return nothing
+
+    require('./routes/api/send_message.js')(app, db);
+    require('./routes/api/get_messages.js')(app, db);
+    require('./routes/api/delete_message.js')(app, db, ObjectID);
+
+    // app.post('/api/send_message', function(req, res){
+    //     if(!req.body) {
+    //         return res.sendStatus(400);
+    //     }
+    //     console.log('Request received: ', req.body);
+    //     const collection = db.collection('messages');
+
+    //     // {
+    //     //     channel: String,
+    //     //     message: String,
+    //     //     user: String,
+    //     //     when: String,
+    //     // }
+
+    //     collection.insertOne(req.body, function(err, result){
+    //         if(result){
+    //             console.log('Successful insertion', result.result);
+    //             res.status(200).send(result.result);
+    //         } else {
+    //             console.log('Issue: ', err);
+    //             res.status(500).send(err);
+    //         }
+    //     });
+        
+    // });
+
+    // require('./routes/api/read.js')(db, col, app);
+    // require('./routes/api/update.js')(db, col, app);
+    // require('./routes/api/delete.js')(db, col, app);
+    // require('./routes/api/clearTestItems.js')(db, col, app);
+    // require('./routes/api/createTestItems.js')(db, col, app);
+    // require('./listen.js')(http, 3000);
 })
 
 // -----------------Mongo stuff above-------------------
+
+
 
 // Users stored here
 var userStringJson = fs.readFileSync('./users.json', 'utf8');
@@ -32,9 +78,6 @@ var userStringJson = fs.readFileSync('./users.json', 'utf8');
 var groupStringJson = fs.readFileSync('./groups.json', 'utf8');
 // Channels stored here
 var channelStringJson = fs.readFileSync('./channels.json', 'utf8');
-
- // This app object denotes the Express application, it's creted by calling the top-level express() function
-var app = express();
 
 // Middleware functions are functions that have access to the request object (req),
 // the response object (res), and the next function in the application’s request-response cycle. 
