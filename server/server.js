@@ -12,8 +12,20 @@ const client = new MongoClient(url);
 // To delete specific mongo items
 const ObjectID = require('mongodb').ObjectID;
 
+// Initialise app express object
 var app = express();
 
+//// Mount middleware
+// Enable Cors
+app.use(cors());                 
+// Allows JSON parsing      
+app.use(bodyParser.json());
+// Serve static content for the app from the "www" directory in the app directory
+app.use(express.static(__dirname + '/www'));
+// Serve static content for the app from the public directory
+app.use('/public', express.static(__dirname + '/public')); 
+
+// Connect to MongoClient
 client.connect(async function(err) {
     if (err) {
         console.log('Error connecting.\n', err);
@@ -22,53 +34,19 @@ client.connect(async function(err) {
 
     // Open db 'chat'
     const db = client.db(dbName);
+
     // Create collections if they don't already exist
     const messages_collection = await db.createCollection('messages');
     // const channels_collection = await db.createCollection('channels');
     // const groups_collection = await db.createCollection('groups');
     // const users_collection = await db.createCollection('users');
 
-    // These all return nothing
-
+    // Bind all API calls to app
     require('./routes/api/send_message.js')(app, db);
     require('./routes/api/get_messages.js')(app, db);
     require('./routes/api/delete_message.js')(app, db, ObjectID);
 
-    // app.post('/api/send_message', function(req, res){
-    //     if(!req.body) {
-    //         return res.sendStatus(400);
-    //     }
-    //     console.log('Request received: ', req.body);
-    //     const collection = db.collection('messages');
-
-    //     // {
-    //     //     channel: String,
-    //     //     message: String,
-    //     //     user: String,
-    //     //     when: String,
-    //     // }
-
-    //     collection.insertOne(req.body, function(err, result){
-    //         if(result){
-    //             console.log('Successful insertion', result.result);
-    //             res.status(200).send(result.result);
-    //         } else {
-    //             console.log('Issue: ', err);
-    //             res.status(500).send(err);
-    //         }
-    //     });
-        
-    // });
-
-    // require('./routes/api/read.js')(db, col, app);
-    // require('./routes/api/update.js')(db, col, app);
-    // require('./routes/api/delete.js')(db, col, app);
-    // require('./routes/api/clearTestItems.js')(db, col, app);
-    // require('./routes/api/createTestItems.js')(db, col, app);
-    // require('./listen.js')(http, 3000);
 })
-
-// -----------------Mongo stuff above-------------------
 
 
 
@@ -91,11 +69,7 @@ var channelStringJson = fs.readFileSync('./channels.json', 'utf8');
     // End the request-response cycle.
     // Call the next middleware in the stack.
 
-// Middleware 
-app.use(cors());                                // Enable Cors
-app.use(bodyParser.json());
-app.use(express.static(__dirname + '/www'));    // Serve static content for the app from the "www" directory in the app directory
-app.use('/public', express.static(__dirname + '/public')); // Serve static content for the app from the public directory
+
 
 /// Listen on port 3000 of localhost
 app.listen(3000, '127.0.0.1', function () {
