@@ -12,7 +12,6 @@ module.exports = (app, db) => {
         //     channel: String,
         //     message: String,
         //     user: String,
-        //     date: Number, [YYYYMMDD]
         //     groups: String[],
         // }
         
