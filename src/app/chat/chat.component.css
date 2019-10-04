@@ -1,0 +1,32 @@
+.container {
+    width: 95vw;
+    position: relative;
+}
+.chat-space {
+    background-color: white;
+}
+
+.chat-space ul {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+}
+.chat-space li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 6px;
+    color: white;
+    border-radius: 5px;
+    margin: 5px 0;
+    background-color: #5252f5;
+}
+.new_message {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 0 10px;
+    background-color: #7272f5;
+    color: white;
+    letter-spacing: 1px;
+}

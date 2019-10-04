@@ -52,6 +52,10 @@ export class DataService {
     return this.http.post('http://localhost:3000/api/update_channel', {'old_name': old_name, 'new_name': new_name, 'users': users, 'group_name':group_name});
   }
 
+  sendMessage(channel_name, message, user){
+    return this.http.post('http://localhost:3000/api/send_message', {'channel_name': channel_name, 'message': message, 'user': user});
+  }
+  
   deleteChannel(channel_name){
     return this.http.post('http://localhost:3000/api/delete_channel', {'channel_name': channel_name});
   }

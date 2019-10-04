@@ -1,4 +1,4 @@
-var cors = require('cors');                 // X Origin Resource Sharing
+const cors = require('cors');                 // X Origin Resource Sharing
 var express = require('express');           // Routing library
 var bodyParser = require('body-parser');    // Means of accessing form elements 
 
@@ -12,11 +12,15 @@ const client = new MongoClient(url);
 // const ObjectID = require('mongodb').ObjectID;
 
 // Initialise app express object
-var app = express();
-
+const app = express();
 //// Mount middleware
 // Enable Cors
+
+const server  = require('http').createServer(app);
+const io = require('socket.io').listen(server);
+
 app.use(cors());                 
+
 // Allows JSON parsing      
 app.use(bodyParser.json());
 // Serve static content for the app from the "www" directory in the app directory
@@ -60,8 +64,10 @@ client.connect(async function(err) {
     require('./routes/api/delete_group.js')(app, db);
 })
 
+
 /// Listen on port 3000 of localhost
-app.listen(3000, '127.0.0.1', function () {
+// app.listen(3000, '127.0.0.1', function () {
+server.listen(3000, '127.0.0.1', function () {
     var d = new Date();
     var n = d.getHours();
     var m = d.getMinutes();

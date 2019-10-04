@@ -20,7 +20,7 @@
 
 
     <!-- If channel selected -->
-    <div *ngIf="current_channel">
+    <div *ngIf="current_channel" class="message_flex">
         
         <!-- Loading -->
         <div *ngIf="!this.messages && current_channel">
@@ -36,7 +36,17 @@
         <div *ngFor="let msg of this.messages">
             <div>{{msg}}</div>
         </div>
-        
+        <form class='new_message'>
+            <div class="new_message_bar">
+                <div class= "form-group form_input">
+                    <!-- <label for='message_content'>Send message</label> -->
+                    <input type='text' [(ngModel)] ='message_content' name='message_content' id='message_content' class='form-control'/>
+                </div>
+                <div class='form-group'>
+                    <button (click)='chat($event, message_content)' class='btn btn-primary'>Send</button>
+                </div>
+            </div>
+        </form>
     </div>
 
 </div>

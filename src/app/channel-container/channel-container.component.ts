@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { SocketService } from '../socket.service';
 import { AppComponent } from '../app.component';
 import { IUser } from '../interfaces';
 import { Router } from '@angular/router';
@@ -13,7 +14,7 @@ export class ChannelContainerComponent implements OnInit {
 
   User: IUser = JSON.parse(sessionStorage.getItem('user'));
   
-  constructor( dataService: DataService, appComp: AppComponent, router: Router) {
+  constructor( private socketService: SocketService, dataService: DataService, appComp: AppComponent, router: Router) {
     if(!this.User){
       router.navigate(['/login']);
     }
@@ -33,6 +34,9 @@ export class ChannelContainerComponent implements OnInit {
     );
   }
 
+  message_content: string;
+  // messages: string[];
+  ioConnection: any;
   current_channel: any | null;
   dataService: DataService;
   channels: any[];
@@ -40,6 +44,42 @@ export class ChannelContainerComponent implements OnInit {
   messages: any[] | null;
 
   ngOnInit() {
+    this.initIoConnection();
+  }
+
+
+  private chat(event){
+    event.preventDefault();
+    if(this.message_content){
+      const channel_name = this.current_channel.channel_name;
+      const message = this.message_content;
+      const user_name = this.User.username;
+      console.log('Channel name: ', channel_name);
+      console.log('Message: ', message);
+      console.log('Username: ', user_name);
+      this.socketService.send(this.message_content);
+      this.dataService.sendMessage(channel_name, message, user_name).subscribe(
+        (res: any) => {
+          console.log('Here my res: ', res);
+        },
+        (err: any) => {
+          this.error_msg = err.message;
+        }
+      );
+      this.message_content=null;
+    }else{
+      console.log('No message');
+    }
+    }
+
+  private initIoConnection(){
+    this.socketService.initSocket();
+    this.ioConnection = this.socketService.onMessage()
+      .subscribe((message: string) => {
+        // add new msg to the messages array
+        console.log('new message: ', message);
+        this.messages.push(message);
+        })
   }
 
   select_channel(event, channel_name) {

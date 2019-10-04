@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
+import { SocketService } from './socket.service';
 
 import { HttpClientModule }    from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
@@ -47,7 +48,7 @@ import { ChannelContainerComponent } from './channel-container/channel-container
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

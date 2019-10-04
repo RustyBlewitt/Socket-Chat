@@ -1,18 +1,18 @@
 module.exports = (app, db) => {
 
     app.post('/api/send_message', function(req, res){
-        if(!req.body) {
+        if(!req.body.message || !req.body.channel_name || !req.body.user) {
+            console.log('Bad request');
             return res.sendStatus(400);
         }
-        console.log('Request received: ', req.body);
+        console.log('New message received: ', req.body);
         const collection = db.collection('messages');
         
         // Incoming body
         // {
-        //     channel: String,
+        //     channel_name: String,
         //     message: String,
         //     user: String,
-        //     groups: String[],
         // }
         
         collection.insertOne(req.body, function(err, result){
