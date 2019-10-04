@@ -61,12 +61,3 @@ client.connect(async function(err) {
     require('./routes/api/get_groups.js')(app, db);
     require('./routes/api/delete_group.js')(app, db);
 })
-
-
-// /// Listen on port 3000 of localhost
-// server.listen(3000, '127.0.0.1', function () {
-//     var d = new Date();
-//     var n = d.getHours();
-//     var m = d.getMinutes();
-//     console.log('Server startup at: ' + n + ':' + m);
-// });

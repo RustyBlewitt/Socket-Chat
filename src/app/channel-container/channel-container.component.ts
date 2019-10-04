@@ -34,8 +34,8 @@ export class ChannelContainerComponent implements OnInit {
     );
   }
 
+  // Component variables
   message_content: string;
-  // messages: string[];
   ioConnection: any;
   current_channel: any | null;
   dataService: DataService;
@@ -47,20 +47,21 @@ export class ChannelContainerComponent implements OnInit {
     this.initIoConnection();
   }
 
-
   private chat(event){
     event.preventDefault();
     if(this.message_content){
+      // Extract variables for readability
       const channel_name = this.current_channel.channel_name;
       const message = this.message_content;
       const user_name = this.User.username;
-      console.log('Channel name: ', channel_name);
-      console.log('Message: ', message);
-      console.log('Username: ', user_name);
-      this.socketService.send(this.message_content);
+
+      // Use socket service to send message
+      this.socketService.send(channel_name);
+
+      // API call to update DB
       this.dataService.sendMessage(channel_name, message, user_name).subscribe(
         (res: any) => {
-          console.log('Here my res: ', res);
+          this.refreshMessages();
         },
         (err: any) => {
           this.error_msg = err.message;
@@ -75,11 +76,24 @@ export class ChannelContainerComponent implements OnInit {
   private initIoConnection(){
     this.socketService.initSocket();
     this.ioConnection = this.socketService.onMessage()
-      .subscribe((message: string) => {
+      .subscribe((target_channel: any) => {
         // add new msg to the messages array
-        console.log('new message: ', message);
-        this.messages.push(message);
-        })
+        console.log('TC ', target_channel);
+        if(target_channel == this.current_channel.channel_name){
+          this.refreshMessages();
+        }
+        });
+  }
+
+  private refreshMessages(){
+    this.dataService.getChannelMessages(this.current_channel.channel_name).subscribe(
+      (res: any) => {
+        this.messages = res;
+      },
+      (err: any) => {
+        this.error_msg = err.message;
+      }
+    );
   }
 
   select_channel(event, channel_name) {
@@ -91,15 +105,7 @@ export class ChannelContainerComponent implements OnInit {
         this.current_channel = this.channels[c];
         this.messages = null;
         // Retrieve clicked on channel's messages
-        this.dataService.getChannelMessages(channel_name).subscribe(
-          (res: any) => {
-            console.log('Here my res: ', res);
-            this.messages = res;
-          },
-          (err: any) => {
-            this.error_msg = err.message;
-          }
-        );
+        this.refreshMessages();
       }
     }
   }
