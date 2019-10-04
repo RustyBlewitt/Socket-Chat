@@ -1,6 +1,6 @@
 module.exports = {
     connect: function(io, PORT){
-
+        console.log("Sockets connected");
         io.on('connection', (socket) => {
             // When a conn req comes in, output to the server console
             console.log(`User connection on port ${PORT} : ${socket.id}`);
@@ -10,7 +10,5 @@ module.exports = {
                 io.emit('message', message);
             })
         })
-
-
     }
 }
