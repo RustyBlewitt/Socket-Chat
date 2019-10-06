@@ -13,6 +13,7 @@ module.exports = (app, db) => {
         //     "level": number,
         //     "name": "Newbie",
         //     "password": "password"
+        //     "image: string (base64img)"
         // }
 
         

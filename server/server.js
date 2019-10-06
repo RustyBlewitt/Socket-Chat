@@ -17,11 +17,14 @@ const client = new MongoClient(url);
 // Allows cross origin requests
 app.use(cors());                 
 // Allows JSON parsing      
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 // Serve static content for the app from the "www" directory in the app directory
 app.use(express.static(__dirname + '/www'));
 // Serve static content for the app from the public directory
 app.use('/public', express.static(__dirname + '/public')); 
+// Increase file size
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
 sockets.connect(io, 3000);
 server.listen(http, 3000);
@@ -49,6 +52,7 @@ client.connect(async function(err) {
     require('./routes/api/send_message.js')(app, db);
 
     require('./routes/api/create_user.js')(app, db);
+    require('./routes/api/add_user_image.js')(app, db);
     require('./routes/api/delete_user.js')(app, db);
     require('./routes/api/get_users.js')(app, db);
 

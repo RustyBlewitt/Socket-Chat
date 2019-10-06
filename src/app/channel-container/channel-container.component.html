@@ -1,14 +1,14 @@
+<!-- If user doesn't belong to any channels -->
+<div class='base' *ngIf="channels && channels.length == 0">
+    <h1>You don't belong to any channels</h1>
+    <img class='alone_img' src='../../assets/alone.jpeg'>
+</div>
+    
 <div class="msg_container">
 
     
     <!-- Exit channel button -->
     <button (click)="exit_channel($event)" *ngIf="current_channel" class="btn btn-primary exit_channel_btn">Exit channel 🚪</button>
-    
-    <!-- If user doesn't belong to any channels -->
-    <div class='no_channels' *ngIf="channels && channels.length == 0">
-        <h1>You don't belong to any channels</h1>
-        <img class='alone_img' src='../../assets/alone.jpeg'>
-    </div>
     
     <!-- Available channels for user to open -->
     <div *ngIf="!current_channel"  class='ch_contain'>

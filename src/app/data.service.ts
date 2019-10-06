@@ -20,8 +20,8 @@ export class DataService {
     return this.http.post('http://localhost:3000/api/auth', {'username': username, 'password': password});
   }
 
-  createUser(username, password, email, level){
-    return this.http.post('http://localhost:3000/api/create_user', {'username': username, 'password': password, 'email': email, 'level': level, 'groups':[]});
+  createUser(username, password, email, level, image?){
+    return this.http.post('http://localhost:3000/api/create_user', {'username': username, 'password': password, 'email': email, image: image || "",'level': level, 'groups':[]});
   }
 
   createChannel(channel_name, users, group_name){
@@ -68,8 +68,8 @@ export class DataService {
     return this.http.post('http://localhost:3000/api/delete_group', {'group_name': group_name});
   }
 
-  // uploadUserImage(){  will send base64 representation
-  //   return this.http.post('http://localhost:3000/api/delete_group', {'group_name': group_name});
-  // }
+  addUserImage(username, image){ 
+    return this.http.post('http://localhost:3000/api/add_user_image', {'username': username, 'image': image});
+  }
 
 }

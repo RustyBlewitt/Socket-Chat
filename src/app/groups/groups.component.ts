@@ -35,7 +35,6 @@ User: IUser = JSON.parse(sessionStorage.getItem('user'));
 
 
   }
-  
 
   dataService: DataService;
   groups: Object[];

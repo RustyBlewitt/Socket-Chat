@@ -1,8 +1,13 @@
-<div *ngFor="let g of groups">
-    <div>{{g}}</div>
-</div>
-
 <div class='base' *ngIf="groups && groups.length == 0">
     <h1>You don't belong to any groups</h1>
     <img class='alone_img' src='../../assets/alone.jpeg'>
+</div>
+
+<div class="group_container" *ngIf="groups && groups.length > 0">
+        
+    <div class='group_card' *ngFor="let g of groups">
+        <h3>{{g.group_name}}</h3>
+        <h1 class="card_emoji_text">👪</h1>
+    </div>
+    
 </div>

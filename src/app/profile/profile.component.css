@@ -63,11 +63,23 @@ h2 {
     list-style-type: none;
 }
 
-.user_image{
-    width: 300px;
-    height: 300px;
+.user_image {
+    width: 30vw;
+    height: 30vw;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 40px;
     display: block;
-    border-radius: 100%;    
+    box-shadow: 10px 2px 20px 0px grey;
+    border-radius: 100%;
+}
+
+.no_image {
+    width: 30vw;
+    height: 30vw;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    display: block;
+    border: 1px dashed black;
+    margin: auto;
 }

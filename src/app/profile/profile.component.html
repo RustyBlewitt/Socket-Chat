@@ -35,10 +35,13 @@
                 </label>
         </div>
         <div class="right">
-            <div *ngIf="this.selectedFileSrc">
-                <!-- <img src="data:image/jpeg;base64,{{this.selectedFileSrc.toString()}}"> -->
-                <!-- <img src="{{this.selectedFileSrc.toString()}}"> -->
-                <img class="user_image" [src]="this.selectedFileSrc" alt="No image">
+            <div *ngIf="this.user_img">
+                <!-- <img src="data:image/jpeg;base64,{{this.user_img.toString()}}"> -->
+                <!-- <img src="{{this.user_img.toString()}}"> -->
+                <img class="user_image" [src]="this.user_img" alt="No image">
+            </div>
+            <div *ngIf="!this.user_img">
+                <p class="no_image">No user image yet uploaded</p>
             </div>
         </div>
 

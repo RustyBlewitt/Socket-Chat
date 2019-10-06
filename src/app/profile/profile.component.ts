@@ -13,25 +13,21 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 
 export class ProfileComponent implements OnInit {
-  User: IUser = JSON.parse(sessionStorage.getItem('user'));
+  User: IUser;
   allUsers: IUser[] | null = null;
   level = ['Regular User', 'Group Assis', 'Group Admin', 'Super Admin'];
-  selectedFileSrc: String | null;
-  selectedFileFile: File | null;
+  user_img: string | null;
   dataService: DataService;
   domSan: DomSanitizer;
-
-  // currentImgBinary: String | null;
-  currentImgBinary: any | null;
+  errorMsg: string | null;
   
   constructor(public router: Router, dataService: DataService, domSan: DomSanitizer, appComp: AppComponent) {
-    
+    this.User= JSON.parse(sessionStorage.getItem('user'));
     this.dataService = dataService;
     this.domSan = domSan;
     
     if(this.User){
-      console.log("User found.\n User level: ", this.User.level, " allUsers: ", this.allUsers);
-      
+      this.user_img = this.User.dp
       // Can view other users if over a certain level
       if(this.User.level > 0){
         dataService.getAllUsers().subscribe((res:IUser[]) => {
@@ -54,16 +50,24 @@ export class ProfileComponent implements OnInit {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
     
-    
     reader.addEventListener('load', (event: any) => {
-      
-      this.selectedFileSrc = event.target.result
-      this.selectedFileFile =  file;
-
+      this.user_img = event.target.result
+      this.dataService.addUserImage(this.User.username, this.user_img).subscribe(
+        (res) => {
+          console.log('Successful upload');
+          this.User.dp = this.user_img;
+          sessionStorage.setItem('user', JSON.stringify(this.User));
+        },
+        (err) => {
+          this.errorMsg = "Failed to upload image";
+        }
+      )
     })
         
     reader.readAsDataURL(file);
-    }
+    
+  }
+    
 
   public logout(event){
     console.log('Logging out ', this.User.username);
