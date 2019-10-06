@@ -4,6 +4,7 @@ module.exports = (app, db) => {
             return res.sendStatus(400);
         }
 
+        console.log('Here the req: ', req.body);
         const collection = db.collection('users');
 
         // Incoming body
@@ -16,20 +17,21 @@ module.exports = (app, db) => {
 
         
         // Check if email or password exists
-        let existing;
+        let existing = false;
         await collection.find({
             $or: [
-                {'name': req.body.name},
+                {'username': req.body.username},
                 {'email': req.body.email}
             ]
         }).toArray().then((res) => {
+            console.log('Here the res: ', res);
             existing = res.length > 0 ? true : false;
         });
 
         // If user exists, send response and return early
         if(existing){
-            console.log("Username or email already exists: ", req.body.name, req.body.email);
-            return res.status(409).send({"message": "Username or email already exists."});
+            console.log("Username or email already exists");
+            res.status(409).send({"message": "Username or email already exists."});
             
         }
         else{

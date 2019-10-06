@@ -31,14 +31,12 @@ export class CreateuserComponent implements OnInit {
     var form = <HTMLElement> document.querySelector(".createuser-form");
 
     this.dataservice.createUser(this.username, this.password, this.email, this.level).subscribe(
-      (res: INetResponse ) => {
-        if (res.success){
-          this.router.navigate(['/home']);
-        } else {
-          this.error = res.message;
-        }
-      }
-    )
+      (res: any ) => {
+        console.log('reso', res);
+        this.router.navigate(['/home']);
+      }, (err: any) => {
+        err.status = 409 ? this.error = "username or email already exists" : "Internal server error, try again later.";
+        });
   }
 
   changeLvl(lvl){

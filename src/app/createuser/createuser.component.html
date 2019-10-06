@@ -24,5 +24,5 @@
             </div>
             <button type="submit" class="btn btn-primary" (click)="create($event)">Create</button>
         <button type="submit" class="btn btn-primary" style="float:right; background: grey; border: grey;" (click)="cancel($event)">Cancel</button>
-        <p *ngIf="error">User creation failed, {{error}}.</p>
+        <p *ngIf="this.error">User creation failed, {{this.error}}.</p>
     </form>

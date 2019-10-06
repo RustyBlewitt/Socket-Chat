@@ -25,7 +25,7 @@
     transition: 0.2s;
     cursor: pointer;
     margin-top: 0px;
-    background: linear-gradient( 0deg,rgb(246, 246, 256), white);
+    background: linear-gradient( 0deg,rgb(246, 246, 256), white );
 }
 
 .card_emoji_text{
@@ -110,6 +110,35 @@
     height: 100%;
 }
 
+.message {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 3px 20px;
+}
+
+.message p {
+    margin-bottom: 5px;
+} 
+
+.sender {
+    color: lightgreen;
+}
+
+.my_messages {
+    float: right;
+    background: blue;
+    color: white;
+    /* border: 1px solid grey; */
+}
+
+.other_messages {
+    float: left;
+    background: grey;
+    /* border: 1px solid grey; */
+    color: black;
+}
+
 .new_message_bar {
     display: flex;
     flex-direction: row;
@@ -122,4 +151,10 @@
 
 .form_input{
     width: -webkit-fill-available;
+}
+
+#scroll_me{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
 }

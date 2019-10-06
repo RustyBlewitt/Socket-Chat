@@ -24,10 +24,8 @@ export class ChatComponent implements OnInit {
 
   private initIoConnection(){
     this.socketService.initSocket();
-    console.log('What is a going onnnnnn')
     this.ioConnection = this.socketService.onMessage()
       .subscribe((message: string) => {
-        console.log('Onmessage?')
         // add new msg to the messages array
         this.messages.push(message);
         })

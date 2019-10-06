@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class ChannelContainerComponent implements OnInit {
 
-  User: IUser = JSON.parse(sessionStorage.getItem('user'));
+  user: IUser = JSON.parse(sessionStorage.getItem('user'));
   
   constructor( private socketService: SocketService, dataService: DataService, appComp: AppComponent, router: Router) {
-    if(!this.User){
+    if(!this.user){
       router.navigate(['/login']);
     }
 
@@ -53,7 +53,7 @@ export class ChannelContainerComponent implements OnInit {
       // Extract variables for readability
       const channel_name = this.current_channel.channel_name;
       const message = this.message_content;
-      const user_name = this.User.username;
+      const user_name = this.user.username;
 
       // Use socket service to send message
       this.socketService.send(channel_name);
@@ -78,7 +78,6 @@ export class ChannelContainerComponent implements OnInit {
     this.ioConnection = this.socketService.onMessage()
       .subscribe((target_channel: any) => {
         // add new msg to the messages array
-        console.log('TC ', target_channel);
         if(target_channel == this.current_channel.channel_name){
           this.refreshMessages();
         }

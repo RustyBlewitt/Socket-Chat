@@ -12,7 +12,7 @@
     
     <!-- Available channels for user to open -->
     <div *ngIf="!current_channel"  class='ch_contain'>
-    <div class='channel_card' *ngFor="let c of channels" (click)="select_channel($event, c.channel_name)">
+        <div class='channel_card' *ngFor="let c of channels" (click)="select_channel($event, c.channel_name)">
             <h3>{{c.channel_name}}</h3>
             <h1 class="card_emoji_text">🚪🚶</h1>
         </div>
@@ -32,10 +32,27 @@
             <h1>No messages have been sent in this channel</h1>
         </div>
         
-        <!-- For each message -->
-        <div *ngFor="let msg of this.messages">
-            <div>{{msg}}</div>
+        <div id="scroll_me">
+
+            <!-- For each message -->
+            <div *ngFor="let msg of this.messages">
+                <div *ngIf="msg.user == this.user.username">
+                    <div class="message my_messages">
+                        <!-- <p class='sender'>{{msg.user}}:</p> -->
+                        <p class='message_content'>{{msg.message}}</p>
+                    </div>
+                </div>
+                <div *ngIf="msg.user != this.user.username">
+                    <div class="message other_messages">                    
+                        <p class='sender'>{{msg.user}}:</p>
+                        <p class='message_content'>{{msg.message}}</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+        <!-- Where user types new messages -->
         <form class='new_message'>
             <div class="new_message_bar">
                 <div class= "form-group form_input">
