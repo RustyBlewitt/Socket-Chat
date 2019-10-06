@@ -1,3 +1,6 @@
+<!-- <script>
+    var global = global || window;
+</script> -->
 <div class="base">
     <div class="flex-wrapper">
         <div class="left">
@@ -23,10 +26,20 @@
             </div>
             <button *ngIf="User.level > 0" type="submit" class="btn btn-primary" (click)="adduser($event)">Add user to group</button> -->
             <button type="submit" class="btn btn-primary" (click)="logout($event)">Logout</button>
-
+            <label class="image-upload-container btn btn-bwm">
+                    <span class='label_span'>Change profile image </span>
+                    <input #imageInput
+                        type="file"
+                        accept="image/*"
+                        (change)="processFile(imageInput)">
+                </label>
         </div>
         <div class="right">
-            
+            <div *ngIf="this.selectedFileSrc">
+                <!-- <img src="data:image/jpeg;base64,{{this.selectedFileSrc.toString()}}"> -->
+                <!-- <img src="{{this.selectedFileSrc.toString()}}"> -->
+                <img class="user_image" [src]="this.selectedFileSrc" alt="No image">
+            </div>
         </div>
 
     </div>

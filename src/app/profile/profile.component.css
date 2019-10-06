@@ -7,6 +7,11 @@ button {
     margin-right: 20px;
 }
 
+.flex-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
 h6 {
     margin-top: 20px;
 }
@@ -15,9 +20,16 @@ h2 {
     font-size: 40px;
 }
 
-.flex-wrapper{
-    display: flex;
-    flex-direction: row;
+.image-upload-container {
+    padding-left: 0;
+}
+
+.image-upload-container span {
+    float: left;
+}
+
+.label_span {
+    margin-right: 5px;
 }
 
 .left {
@@ -26,7 +38,8 @@ h2 {
 
 .right {
     width: 50%;
-    background-color: grey;
+    /* background-color: grey; */
+    border-left: 1px solid grey;
 }
 
 .base {
@@ -50,3 +63,11 @@ h2 {
     list-style-type: none;
 }
 
+.user_image{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 50px;
+    display: block;
+    border-radius: 100%;    
+}

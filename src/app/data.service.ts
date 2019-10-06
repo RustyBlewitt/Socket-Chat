@@ -68,4 +68,8 @@ export class DataService {
     return this.http.post('http://localhost:3000/api/delete_group', {'group_name': group_name});
   }
 
+  // uploadUserImage(){  will send base64 representation
+  //   return this.http.post('http://localhost:3000/api/delete_group', {'group_name': group_name});
+  // }
+
 }
