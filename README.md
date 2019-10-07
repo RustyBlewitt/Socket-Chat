@@ -8,6 +8,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 From the server directory, run `npm start`.
 
+From any directory in a separate terminal, run `mongod` to fire up the database and ensure you have a database created titled `chat`.
+
 ## Git approach
 
 Leveraging Git's simple `git clone` command, bootstrapping this project from the Week 5 workshop project was a simple and efficient way to get moving.
@@ -26,7 +28,7 @@ Channels, being the third most relevant class of data, are much the same but the
 
 ```javascript
 Users{
-    "level": number;        // This number indicates the users level of privilege
+    "level": number;
     "username": string;
     "password": string;
     "valid": boolean;
@@ -45,33 +47,41 @@ Channels{
     "name": string;
     "users": string[];
     "group_name": string;
-    "messages": string[];   // Assignment 2 will involve actual chat
+    "messages": string[];
 }
 ```
 
 ## Rest API
 
-* <h4>getAllUsers</h4><span style="color: #66ff33">get</span>("http://localhost:3000/api/allUsers");
+* <h4>attemptLogin</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/auth");
 
-* <h4>getAllGroups</h4><span style="color: #66ff33">get</span>("http://localhost:3000/api/allGroups");
+* <h4>createUser</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/createUser");
 
-* <h4>getAllChannels</h4><span style="color: #66ff33">get</span>("http://localhost:3000/api/allChannels");
+* <h4>createChannel</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/createChannel");
 
-* <h4>attemptLogin</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/auth", {'username': username, 'password': password});
+* <h4>createGroup</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/createGroup");
 
-* <h4>createUser</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createUser", {'username': username, 'password': password, 'email': email, 'level': level, 'groups':[]});
+* <h4>getUsers</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/get_users");
 
-* <h4>createChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createChannel", {'channel_name': channel_name, 'channelusers': channelusers, 'group_name': group_name});
+* <h4>getAllGroups</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/all_groups");
 
-* <h4>createGroup</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/createGroup", {'group_name': group_name, 'users': users,       'assis': assis, 'admins': admins});
+* <h4>getAllChannels</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/get_channels");
 
-* <h4>editChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/editChannel", {'old_name': old_name, 'new_name': new_name, 'users': users, 'group_name':group_name});
+* <h4>getChannelMessages</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/get_messages"); 
+  
+* <h4>updateChannel</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/update_channel"); 
 
-* <h4>deleteChannel</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteChannel", {'channel_name': channel_name});
+* <h4>sendMessage</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/send_message"); 
 
-* <h4>deleteUser</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteUser", {'username': username});
+* <h4>editChannel</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/editChannel");
 
-* <h4>deleteGroup</h4><span style="color: #6633ff">post</span>("http://localhost:3000/api/deleteGroup", {'group_name': group_name});
+* <h4>deleteChannel</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/delete_channel");
+
+* <h4>deleteUser</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/delete_user");
+
+* <h4>deleteGroup</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/deleteGroup");
+  
+* <h4>addUserImage</h4><span style="color: #66ff33">post</span>("http://localhost:3000/api/add_user_image");
 
 ## Angular architecture
 
