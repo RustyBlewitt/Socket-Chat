@@ -16,7 +16,7 @@ module.exports = (app, db) => {
         collection.update(
             {'username': req.body.username}, 
             {$set: 
-                {'image': req.body.image}
+                {'user_image': req.body.image}
             },
             function(err, result){
                 if(result){
