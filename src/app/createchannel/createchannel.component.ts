@@ -54,10 +54,10 @@ export class CreatechannelComponent implements OnInit {
     if(this.selectedusers.indexOf(user) < 0){
       console.log('in');
       this.selectedusers.push(user);
-      document.querySelector("#"+user).setAttribute("class", "btn btn-primary selected");
+      document.querySelector("#u_"+user).setAttribute("class", "btn btn-primary selected");
     }else{
       console.log('out');
-      document.querySelector("#"+user).setAttribute("class", "btn btn-primary unselected");
+      document.querySelector("#u_"+user).setAttribute("class", "btn btn-primary unselected");
       this.selectedusers = this.selectedusers.filter( (u) => {
         return u != user;
       });
@@ -83,9 +83,9 @@ export class CreatechannelComponent implements OnInit {
             }
           )
         }
-        document.querySelector('#'+group.group_name).setAttribute('class', 'btn btn-primary unselected');
+        document.querySelector('#g_'+group.group_name).setAttribute('class', 'btn btn-primary unselected');
       })
-    document.querySelector('#'+group_name).setAttribute('class', 'btn btn-primary selected');
+    document.querySelector('#g_'+group_name).setAttribute('class', 'btn btn-primary selected');
 
     this.userlist = userlist;
     console.log(this.userlist);

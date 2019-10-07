@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { SocketService } from '../socket.service';
 import { AppComponent } from '../app.component';
-import { IUser } from '../interfaces';
+// import { IUser } from '../interfaces';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,14 +11,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./channel-container.component.css']
 })
 export class ChannelContainerComponent implements OnInit {
-
-  user: IUser = JSON.parse(sessionStorage.getItem('user'));
+  
+  // Component variables
+  message_content: string;
+  ioConnection: any;
+  current_channel: any | null;
+  dataService: DataService;
+  channels: any[];
+  error_msg: String | null;
+  messages: any[] | null;
+  user: any = JSON.parse(sessionStorage.getItem('user'));
+  // current_channel_users: any[] | null;
+  user_images: any[] | null;
   
   constructor( private socketService: SocketService, dataService: DataService, appComp: AppComponent, router: Router) {
     if(!this.user){
       router.navigate(['/login']);
     }
-
+    
     // Update active link in nav bar
     appComp.updateActive('#channels-link');
 
@@ -34,14 +44,6 @@ export class ChannelContainerComponent implements OnInit {
     );
   }
 
-  // Component variables
-  message_content: string;
-  ioConnection: any;
-  current_channel: any | null;
-  dataService: DataService;
-  channels: any[];
-  error_msg: String | null;
-  messages: any[] | null;
 
   ngOnInit() {
     this.initIoConnection();
@@ -103,9 +105,31 @@ export class ChannelContainerComponent implements OnInit {
         // Set current_channel to clicked on channel
         this.current_channel = this.channels[c];
         this.messages = null;
-        // Retrieve clicked on channel's messages
+        this.get_user_images();
         this.refreshMessages();
       }
+    }
+  }
+
+  get_user_images(){
+    this.user_images = [];
+    console.log(this.current_channel.users);
+    for(let i = 0; i < this.current_channel.users.length; i++){
+      this.dataService.getUser(this.current_channel.users[i]).subscribe(
+        (user: any) => {
+          user = user[0];
+          console.log('User response: ', user);
+          console.log('current_channel.users', this.current_channel.users);
+          let key = user.username;
+          let val = user.user_image;
+          this.user_images[key] = val;
+          console.log(this.user_images);
+          // console.log('test = ', this.user_images['rusty']);
+          },
+        (err) => {
+          console.log('Err retrieving user');
+        }
+      )
     }
   }
 
@@ -113,5 +137,6 @@ export class ChannelContainerComponent implements OnInit {
     event.preventDefault();
     this.current_channel = null;
   }
+
 
 }

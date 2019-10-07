@@ -64,10 +64,11 @@ export class CreategroupComponent implements OnInit {
   toggleuser(event, username){
     event.preventDefault();
     if(this.usersToAdd.indexOf(username) > -1){
-      document.querySelector('#'+username).setAttribute('class', 'btn btn-primary unselected');
+      document.getElementById('#u_'+username).setAttribute('class', 'btn btn-primary unselected');
       this.usersToAdd = this.usersToAdd.filter( (u) => u != username);
     }else{
-      document.querySelector('#'+username).setAttribute('class', 'btn btn-primary selected');
+      console.log('Chasing #u_'+username);
+      document.getElementById('#u_'+username).setAttribute('class', 'btn btn-primary selected');
       this.usersToAdd.push(username);
     }
   }

@@ -46,22 +46,26 @@ export class EditchannelComponent implements OnInit {
   // channel was clicked then displays edit options for that channel to the user.
   selectchannel(event, name){
     event.preventDefault();
+    console.log(this.channels);
     this.selectedchannel = this.channels.filter((ch) => {
-      return ch.name == name;
+      console.log(ch);
+      return ch.channel_name == name;
     });
     this.selectedchannel = this.selectedchannel[0];
     this.channel_name = this.selectedchannel.channel_name;
     this.dataservice.getAllUsers().subscribe( (res: any[]) => {
       this.potentialusers = res;
-      this.potentialusers = this.potentialusers.filter( (u) => {
-        let inGroup = false;
-        u.groups.forEach( (g) => {
-          if(g == this.selectedchannel.group_name){
-            inGroup = true;
-          };
-        })
-        return inGroup;
-      })
+      console.log('here res: ');
+      console.log(this.potentialusers);
+      // this.potentialusers = this.potentialusers.filter( (u) => {
+      //   let inGroup = false;
+      //   u.groups.forEach( (g) => {
+      //     if(g == this.selectedchannel.group_name){
+      //       inGroup = true;
+      //     };
+      //   })
+        // return inGroup;
+      // })
     })
   }
 
@@ -69,12 +73,16 @@ export class EditchannelComponent implements OnInit {
   // data stored in this component
   edit(event){
     event.preventDefault();
-    let new_name = this.channel_name || this.selectedchannel.name;
+    let channel_name = this.selectedchannel.channel_name;
     let users = this.selectedusers;
-    let group_name = this.selectedchannel.group_name;
-    this.dataservice.updateChannel(this.selectedchannel.name, new_name, users, group_name).subscribe( (success) => {
-      success ? this.router.navigate(['home']) : this.error = "Failed to edit";
-    })
+    console.log('sending channel name as : ', channel_name);
+    this.dataservice.updateChannel(channel_name, users).subscribe( 
+      (success) => {
+        this.router.navigate(['home'])
+      }, (err) => {
+        this.error = "Failed to edit";
+      }
+      )
   }
 
   // Toggle between selected and unselected on users

@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'creategroup', component: CreategroupComponent },
   { path: 'deletegroup', component: DeletegroupComponent },
   { path: 'createchannel', component: CreatechannelComponent },
-  { path: 'editchannel', component: EditchannelComponent },
+  { path: 'updatechannel', component: EditchannelComponent },
   { path: 'deletechannel', component: DeletechannelComponent },
   { path: 'groups', component: GroupsComponent},
   { path: 'channels', component: ChannelContainerComponent},

@@ -6,12 +6,12 @@
         </div>
         <div class="margin-top margin-bottom form-channel">
             <h6>Channel group</h6>
-            <button *ngFor="let g of grouplist" id="{{g.group_name}}" class="btn btn-primary unselected" (click)="selectgroup($event, g.group_name)">{{g.group_name}}</button>
+            <button *ngFor="let g of grouplist" id="g_{{g.group_name}}" class="btn btn-primary unselected" (click)="selectgroup($event, g.group_name)">{{g.group_name}}</button>
         </div>
 
         <div class="margin-top" *ngIf="userlist != null" class="form-channel">
             <h6>Select channel members</h6>
-            <button *ngFor="let u of userlist" id="{{u}}" class="btn btn-primary unselected" (click)="toggleuser($event, u)">{{u}}</button>
+            <button *ngFor="let u of userlist" id="u_{{u}}" class="btn btn-primary unselected" (click)="toggleuser($event, u)">{{u}}</button>
         </div>
         <div class="margin-top">
             <button type="submit" class="btn btn-primary" (click)="create($event)">Create</button>

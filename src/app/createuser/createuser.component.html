@@ -22,7 +22,7 @@
                 <button type="submit" class="lvl2 lvlbtn btn btn-primary" (click)="changeLvl(2)">Group admin</button>
                 <button type="submit" class="lvl3 lvlbtn btn btn-primary" (click)="changeLvl(3)">Super user</button>
             </div>
-            <button type="submit" class="btn btn-primary" (click)="create($event)">Create</button>
+        <button *ngIf="this.password == this.confirmPassword" type="submit" class="btn btn-primary" (click)="create($event)">Create</button>
         <button type="submit" class="btn btn-primary" style="float:right; background: grey; border: grey;" (click)="cancel($event)">Cancel</button>
         <p *ngIf="this.error">User creation failed, {{this.error}}.</p>
     </form>

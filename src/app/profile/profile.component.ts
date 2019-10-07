@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   User: IUser;
   allUsers: IUser[] | null = null;
   level = ['Regular User', 'Group Assis', 'Group Admin', 'Super Admin'];
-  user_img: string | null;
+  user_image: string | null;
   dataService: DataService;
   domSan: DomSanitizer;
   errorMsg: string | null;
@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
     this.domSan = domSan;
     
     if(this.User){
-      this.user_img = this.User.dp
+      this.user_image = this.User.user_image;
       // Can view other users if over a certain level
       if(this.User.level > 0){
         dataService.getAllUsers().subscribe((res:IUser[]) => {
@@ -51,11 +51,11 @@ export class ProfileComponent implements OnInit {
     const reader = new FileReader();
     
     reader.addEventListener('load', (event: any) => {
-      this.user_img = event.target.result
-      this.dataService.addUserImage(this.User.username, this.user_img).subscribe(
+      this.user_image = event.target.result
+      this.dataService.addUserImage(this.User.username, this.user_image).subscribe(
         (res) => {
           console.log('Successful upload');
-          this.User.dp = this.user_img;
+          this.User.user_image = this.user_image;
           sessionStorage.setItem('user', JSON.stringify(this.User));
         },
         (err) => {

@@ -41,7 +41,7 @@
     max-width: 45%;
     min-width: 200px;
     margin: 10px;
-    height: 300px;
+    height: auto;
     padding: 20px;
     /* background: white; */
     background: linear-gradient( 10deg, white, white);
@@ -144,12 +144,38 @@
     margin: 3px 20px;
 }
 
-.message p {
+.other_messages p {
     margin-bottom: 5px;
+    float: right;
+} 
+
+.my_messages p {
+    margin-bottom: 5px;
+    float: left;
 } 
 
 .sender {
-    color: lightgreen;
+    color: #f7f7f7;
+    font-style: italic;
+    font-size: 11px;
+    float: none !important;
+    text-align: left;
+}
+
+.sender_img_others {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 100%;
+}
+
+.sender_img_me {
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 100%;
 }
 
 .my_messages {

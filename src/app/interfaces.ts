@@ -4,7 +4,7 @@ export interface IUser {
     password: string;
     valid: boolean;
     groups: string[];
-    dp: string;
+    user_image: string;
     email?: string;
 }
 

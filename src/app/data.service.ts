@@ -35,6 +35,10 @@ export class DataService {
   getAllUsers(){
     return this.http.post('http://localhost:3000/api/get_users', {'query': {}});
   };
+
+  getUser(username){
+    return this.http.post('http://localhost:3000/api/get_users', {'query': {'username': username}});
+  };
   
   getAllGroups(){
     return this.http.post('http://localhost:3000/api/get_groups', {'query': {}});
@@ -48,8 +52,8 @@ export class DataService {
     return this.http.post('http://localhost:3000/api/get_messages', {'channel_name': channel_name})
   }
 
-  updateChannel(old_name, new_name, users, group_name){
-    return this.http.post('http://localhost:3000/api/update_channel', {'old_name': old_name, 'new_name': new_name, 'users': users, 'group_name':group_name});
+  updateChannel(channel_name, users){
+    return this.http.post('http://localhost:3000/api/update_channel', {'channel_name': channel_name, 'users': users});
   }
 
   sendMessage(channel_name, message, user){

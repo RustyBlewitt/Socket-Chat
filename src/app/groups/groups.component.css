@@ -25,14 +25,14 @@
     bottom: 50px;
 }
 
-.ch_contain{
+.ch_contain {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.group_card{
+.group_card {
     transition: 0.2s;
     box-shadow: #0000006e 7px 7px 14px 0px;
     border-radius: 10px 10px 10px 10px;
@@ -43,28 +43,27 @@
     margin: 10px;
     height: 150px;
     padding: 20px;
+    display: inline-block;
     /* background: white; */
     background: linear-gradient( 10deg, white, white);
 }
 
 
-.group_card:hover{
+.group_card:hover {
     transition: 0.2s;
-    cursor: pointer;
-    margin-top: 0px;
     background: linear-gradient( 0deg,rgb(246, 246, 256), white );
 }
 
-.card_emoji_text{
+.card_emoji_text {
     transition: 0.2s;
     opacity: 0;
 }
 
-.group_card:hover .card_emoji_text{
+.group_card:hover .card_emoji_text {
     transition: 0.2s;
     opacity: 1;
 }
-.group_card h3{
+.group_card h3 {
     color: #1a7ad6;
 }
 

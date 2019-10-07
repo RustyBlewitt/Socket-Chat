@@ -38,14 +38,15 @@
             <div *ngFor="let msg of this.messages">
                 <div *ngIf="msg.user == this.user.username">
                     <div class="message my_messages">
-                        <!-- <p class='sender'>{{msg.user}}:</p> -->
-                        <p class='message_content'>{{msg.message}}</p>
+                        <p class="message_content">{{msg.message}}</p>
+                        <img class = "sender_img_me" src="{{this.user_images[this.user.username]}}">
                     </div>
                 </div>
                 <div *ngIf="msg.user != this.user.username">
                     <div class="message other_messages">                    
-                        <p class='sender'>{{msg.user}}:</p>
+                        <p class='sender'>{{msg.user}}</p>
                         <p class='message_content'>{{msg.message}}</p>
+                        <img class = "sender_img_others" src="{{this.user_images[msg.user]}}">
                     </div>
                 </div>
             </div>
